@@ -24,9 +24,7 @@ import re
 import sys
 
 # Complete the gameOfThrones function below.
-
-if __name__ == '__main__':
-    s: str = "cdcdcdcdeeeef"
+def gameOfThrones(s):
     charMap = dict()
     for item in s:
         if item in charMap:
@@ -39,6 +37,11 @@ if __name__ == '__main__':
 
     for key in keys:
         if oddCounter > 1:
-            #Stop
+            return "NO"
         if charMap[key] % 2 != 0:
             oddCounter += 1
+    return "YES"
+
+if __name__ == '__main__':
+    s: str = "cdcdcdcdeeeef"
+    print(gameOfThrones(s))
