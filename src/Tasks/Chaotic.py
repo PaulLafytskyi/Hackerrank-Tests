@@ -1,27 +1,23 @@
-def read_strings():
-    return input().strip().split(' ')
+#!/bin/python3
 
-def read_ints():
-    return [int(x) for x in read_strings()]
+import math
+import os
+import random
+import re
+import sys
 
+# Complete the minimumBribes function below.
 def minimumBribes(q):
-    count = 0
-    for i in range(len(q)):
-        dif = i + 1 - q[i]
-        if (dif < -2):
+    result = 0
+    for i in range(len(q) - 1, -1, -1):
+        if q[i] - (i + 1) > 2:
             print("Too chaotic")
             return
-        else:
-            if dif > 0:
-                count += 1
-    print(count)
-
+        c = max(0, q[i] - 2)
+        for j in range(c, i):
+            if q[j] > q[i]:
+                result += 1
+    print(result)
 
 if __name__ == '__main__':
-    t = int(input())
-    for t_itr in range(t):
-        t = int(input())
-        if(t == 0):
-            print(0)
-        else:
-            minimumBribes(read_ints())
+    minimumBribes([2, 1, 5, 3, 4])
